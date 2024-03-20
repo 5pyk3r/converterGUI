@@ -11,6 +11,6 @@ export class ConverterAPIServiceService {
 
   public sendFile(): Observable<any>{
 
-    return this.httpCLient.post<any>('localhost:8080/conv/upload-file', null);
+    return this.httpCLient.post<any>('http://localhost:8080/conv/upload-file', null);
   }
 }
