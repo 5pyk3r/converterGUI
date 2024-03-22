@@ -5,19 +5,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './components/main/main.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DragAndDropDirective } from './directives/drag-and-drop.directive';
+import { NgxFileDropModule } from 'ngx-file-drop';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
-    DragAndDropDirective
+    MainComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxFileDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

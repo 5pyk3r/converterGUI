@@ -1,4 +1,6 @@
+import { HttpHeaders } from "@angular/common/http";
 import { Component, OnInit, ViewChild, ElementRef  } from "@angular/core";
+import { NgxFileDropEntry } from "ngx-file-drop/lib/ngx-file-drop-entry";
 import { ConverterAPIServiceService } from "src/app/services/converter-apiservice.service";
 
 @Component({
@@ -14,9 +16,7 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.convertApiService.sendFile().subscribe(()=> {
-        console.log('uderzono na backedn');
-      })
+   
   }
  
   public files: NgxFileDropEntry[] = [];
@@ -33,21 +33,21 @@ export class MainComponent implements OnInit {
           // Here you can access the real file
           console.log(droppedFile.relativePath, file);
 
-          /**
+          
           // You could upload it like this:
           const formData = new FormData()
-          formData.append('logo', file, relativePath)
+          formData.append('file', file, 'name')
 
           // Headers
           const headers = new HttpHeaders({
             'security-token': 'mytoken'
           })
 
-          this.http.post('https://mybackend.com/api/upload/sanitize-and-save-logo', formData, { headers: headers, responseType: 'blob' })
-          .subscribe(data => {
-            // Sanitized logo returned from backend
+      
+          this.convertApiService.sendFile(formData).subscribe(()=> {
+            console.log('uderzono na backedn');
           })
-          **/
+       
 
         });
       } else {
@@ -58,11 +58,11 @@ export class MainComponent implements OnInit {
     }
   }
 
-  public fileOver(event){
+  public fileOver(event: Event){
     console.log(event);
   }
 
-  public fileLeave(event){
+  public fileLeave(event: Event){
     console.log(event);
   }
 }

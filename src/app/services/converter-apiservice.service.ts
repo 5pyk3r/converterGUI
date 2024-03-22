@@ -9,8 +9,8 @@ export class ConverterAPIServiceService {
 
   constructor(public httpCLient: HttpClient) { }
 
-  public sendFile(): Observable<any>{
+  public sendFile(formData: FormData): Observable<any>{
 
-    return this.httpCLient.post<any>('http://localhost:8080/conv/upload-file', null);
+    return this.httpCLient.post<any>('http://localhost:8080/conv/upload-file', formData);
   }
 }
